@@ -28,7 +28,7 @@ prompt APPLICATION 230602 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230602
 --   Name:            PR Billing Trust Account
---   Date and Time:   15:18 Tuesday June 13, 2023
+--   Date and Time:   11:51 Thursday June 15, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'mwong'
-,p_last_upd_yyyymmddhh24miss=>'20230613141550'
+,p_last_upd_yyyymmddhh24miss=>'20230614114132'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -14924,7 +14924,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'mwong'
-,p_last_upd_yyyymmddhh24miss=>'20230613141550'
+,p_last_upd_yyyymmddhh24miss=>'20230614114132'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(36796359219580028)
@@ -15147,7 +15147,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'359224'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'ACCOUNT_DBID:PI_PERSON_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:DEPARTMENT_DBID:SPONSOR_DBID:CONTACT_DBID:DEPARTMENT_HEAD_DBID:ETHICS_NUMBER:EXPENSES:FAS_NUMBER:'
+,p_report_columns=>'ACCOUNT_DBID:PI_PERSON_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:DEPARTMENT_DBID:SPONSOR_DBID:CONTACT_DBID:DEPARTMENT_HEAD_DBID:ETHICS_NUMBER:FAS_NUMBER:EXPENSES:'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(36796437274580029)
