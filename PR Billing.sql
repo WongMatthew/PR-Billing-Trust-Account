@@ -28,7 +28,7 @@ prompt APPLICATION 230602 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230602
 --   Name:            PR Billing Trust Account
---   Date and Time:   14:30 Wednesday June 21, 2023
+--   Date and Time:   15:13 Wednesday June 21, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230621135827'
+,p_last_upd_yyyymmddhh24miss=>'20230621151321'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -14644,7 +14644,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230621135827'
+,p_last_upd_yyyymmddhh24miss=>'20230621151321'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(107580680965255574)
@@ -14738,19 +14738,6 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(107842630053106621)
-,p_db_column_name=>'ACCOUNT_DBID'
-,p_display_order=>30
-,p_column_identifier=>'C'
-,p_column_label=>'Account'
-,p_column_type=>'NUMBER'
-,p_display_text_as=>'LOV_ESCAPE_SC'
-,p_column_alignment=>'RIGHT'
-,p_rpt_named_lov=>wwv_flow_imp.id(107581776916255597)
-,p_rpt_show_filter_lov=>'1'
-,p_use_as_row_header=>'N'
-);
-wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107842722942106622)
 ,p_db_column_name=>'PI_PERSON_DBID'
 ,p_display_order=>40
@@ -14766,7 +14753,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107842859521106623)
 ,p_db_column_name=>'LEVEL_1_PERSON_DBID'
-,p_display_order=>50
+,p_display_order=>60
 ,p_column_identifier=>'E'
 ,p_column_label=>'Level 1 Person'
 ,p_column_type=>'NUMBER'
@@ -14779,7 +14766,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107842906510106624)
 ,p_db_column_name=>'LEVEL_2_PERSON_DBID'
-,p_display_order=>60
+,p_display_order=>70
 ,p_column_identifier=>'F'
 ,p_column_label=>'Level 2 Person'
 ,p_column_type=>'NUMBER'
@@ -14792,7 +14779,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107842995098106625)
 ,p_db_column_name=>'DEPARTMENT_DBID'
-,p_display_order=>70
+,p_display_order=>90
 ,p_column_identifier=>'G'
 ,p_column_label=>'Department'
 ,p_column_type=>'NUMBER'
@@ -14803,9 +14790,18 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(36797786324580042)
+,p_db_column_name=>'ACCOUNT_NAME'
+,p_display_order=>100
+,p_column_identifier=>'P'
+,p_column_label=>'Account Name'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107843122943106626)
 ,p_db_column_name=>'SPONSOR_DBID'
-,p_display_order=>80
+,p_display_order=>110
 ,p_column_identifier=>'H'
 ,p_column_label=>'Sponsor'
 ,p_column_type=>'NUMBER'
@@ -14818,7 +14814,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107843180667106627)
 ,p_db_column_name=>'TYPE_DBID'
-,p_display_order=>90
+,p_display_order=>120
 ,p_column_identifier=>'I'
 ,p_column_label=>'Type'
 ,p_column_type=>'NUMBER'
@@ -14831,7 +14827,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107843281542106628)
 ,p_db_column_name=>'OVERHEAD'
-,p_display_order=>100
+,p_display_order=>130
 ,p_column_identifier=>'J'
 ,p_column_label=>'Overhead'
 ,p_column_type=>'STRING'
@@ -14840,7 +14836,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107843407354106629)
 ,p_db_column_name=>'ADDITIONAL_ADMIN_PERSON_DBID'
-,p_display_order=>110
+,p_display_order=>140
 ,p_column_identifier=>'K'
 ,p_column_label=>'Additional Admin Person'
 ,p_column_type=>'NUMBER'
@@ -14853,7 +14849,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107843487366106630)
 ,p_db_column_name=>'SEND_TO_EMAIL'
-,p_display_order=>120
+,p_display_order=>150
 ,p_column_identifier=>'L'
 ,p_column_label=>'Send To Email'
 ,p_column_type=>'STRING'
@@ -14862,7 +14858,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(107843625518106631)
 ,p_db_column_name=>'OTHER_NOTES'
-,p_display_order=>130
+,p_display_order=>160
 ,p_column_identifier=>'M'
 ,p_column_label=>'Other Notes'
 ,p_column_type=>'STRING'
@@ -14871,7 +14867,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(36797297306580037)
 ,p_db_column_name=>'ETHICS_NUMBER'
-,p_display_order=>140
+,p_display_order=>170
 ,p_column_identifier=>'N'
 ,p_column_label=>'Ethics Number'
 ,p_column_type=>'STRING'
@@ -14880,7 +14876,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(36797315835580038)
 ,p_db_column_name=>'FAS_NUMBER'
-,p_display_order=>150
+,p_display_order=>180
 ,p_column_identifier=>'O'
 ,p_column_label=>'Fas Number'
 ,p_column_type=>'STRING'
@@ -14893,7 +14889,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'359224'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'SEND_TO_PERSON_DBID:SEND_TO_EMAIL:PI_PERSON_DBID:ETHICS_NUMBER:FAS_NUMBER:ACCOUNT_DBID:TYPE_DBID:SPONSOR_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:ADDITIONAL_ADMIN_PERSON_DBID:OVERHEAD:OTHER_NOTES:'
+,p_report_columns=>'SEND_TO_PERSON_DBID:SEND_TO_EMAIL:PI_PERSON_DBID:ETHICS_NUMBER:FAS_NUMBER:ACCOUNT_NAME:TYPE_DBID:SPONSOR_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:ADDITIONAL_ADMIN_PERSON_DBID:OVERHEAD:OTHER_NOTES:'
 ,p_sort_column_1=>'ETHICS_NUMBER'
 ,p_sort_direction_1=>'ASC'
 ,p_sort_column_2=>'FAS_NUMBER'
@@ -17611,7 +17607,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230621135349'
+,p_last_upd_yyyymmddhh24miss=>'20230621151123'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(178639808328902542)
@@ -17778,24 +17774,24 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760029961769018)
 ,p_name=>'P300_ACCOUNT'
-,p_source_data_type=>'NUMBER'
-,p_is_required=>true
+,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
-,p_prompt=>'Account'
-,p_source=>'ACCOUNT_DBID'
+,p_prompt=>'Account Name'
+,p_source=>'ACCOUNT_NAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'ACCOUNT.ACCOUNT_NAME'
-,p_lov_display_null=>'YES'
-,p_cHeight=>1
-,p_field_template=>wwv_flow_imp.id(142970964141150038)
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cMaxlength=>500
+,p_cHeight=>5
+,p_field_template=>wwv_flow_imp.id(142971843443150038)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_lov_display_extra=>'YES'
-,p_attribute_01=>'NONE'
+,p_attribute_01=>'Y'
 ,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760115802769019)
@@ -17997,7 +17993,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cSize=>30
 ,p_cMaxlength=>200
 ,p_cHeight=>5
-,p_field_template=>wwv_flow_imp.id(142970964141150038)
+,p_field_template=>wwv_flow_imp.id(142971843443150038)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'Y'
