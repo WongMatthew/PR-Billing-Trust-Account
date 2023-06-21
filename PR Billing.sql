@@ -28,12 +28,12 @@ prompt APPLICATION 230602 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230602
 --   Name:            PR Billing Trust Account
---   Date and Time:   16:13 Tuesday June 20, 2023
+--   Date and Time:   14:30 Wednesday June 21, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     15
---       Items:                   59
+--       Items:                   61
 --       Processes:               18
 --       Regions:                 32
 --       Buttons:                 31
@@ -115,7 +115,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230615141613'
+,p_last_upd_yyyymmddhh24miss=>'20230621135827'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -14644,7 +14644,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230602113717'
+,p_last_upd_yyyymmddhh24miss=>'20230621135827'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(107580680965255574)
@@ -14755,7 +14755,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'PI_PERSON_DBID'
 ,p_display_order=>40
 ,p_column_identifier=>'D'
-,p_column_label=>'Pi Person'
+,p_column_label=>'Principle Investigator'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_column_alignment=>'RIGHT'
@@ -14794,7 +14794,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'DEPARTMENT_DBID'
 ,p_display_order=>70
 ,p_column_identifier=>'G'
-,p_column_label=>'Departmen'
+,p_column_label=>'Department'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_column_alignment=>'RIGHT'
@@ -14868,6 +14868,24 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_type=>'STRING'
 ,p_use_as_row_header=>'N'
 );
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(36797297306580037)
+,p_db_column_name=>'ETHICS_NUMBER'
+,p_display_order=>140
+,p_column_identifier=>'N'
+,p_column_label=>'Ethics Number'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(36797315835580038)
+,p_db_column_name=>'FAS_NUMBER'
+,p_display_order=>150
+,p_column_identifier=>'O'
+,p_column_label=>'Fas Number'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
 wwv_flow_imp_page.create_worksheet_rpt(
  p_id=>wwv_flow_imp.id(107934386122432238)
 ,p_application_user=>'APXWS_DEFAULT'
@@ -14875,7 +14893,19 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'359224'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'SEND_TO_PERSON_DBID:SEND_TO_EMAIL:ACCOUNT_DBID:PI_PERSON_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:DEPARTMENT_DBID:SPONSOR_DBID:TYPE_DBID:OVERHEAD:ADDITIONAL_ADMIN_PERSON_DBID:OTHER_NOTES:'
+,p_report_columns=>'SEND_TO_PERSON_DBID:SEND_TO_EMAIL:PI_PERSON_DBID:ETHICS_NUMBER:FAS_NUMBER:ACCOUNT_DBID:TYPE_DBID:SPONSOR_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:ADDITIONAL_ADMIN_PERSON_DBID:OVERHEAD:OTHER_NOTES:'
+,p_sort_column_1=>'ETHICS_NUMBER'
+,p_sort_direction_1=>'ASC'
+,p_sort_column_2=>'FAS_NUMBER'
+,p_sort_direction_2=>'ASC'
+,p_sort_column_3=>'0'
+,p_sort_direction_3=>'ASC'
+,p_sort_column_4=>'0'
+,p_sort_direction_4=>'ASC'
+,p_sort_column_5=>'0'
+,p_sort_direction_5=>'ASC'
+,p_sort_column_6=>'0'
+,p_sort_direction_6=>'ASC'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(107759636360769014)
@@ -17581,7 +17611,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230613103037'
+,p_last_upd_yyyymmddhh24miss=>'20230621135349'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(178639808328902542)
@@ -17677,6 +17707,50 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_sequence=>10
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(36797486617580039)
+,p_name=>'P300_FAS'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
+,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
+,p_prompt=>'FAS Number'
+,p_source=>'FAS_NUMBER'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cMaxlength=>500
+,p_cHeight=>5
+,p_field_template=>wwv_flow_imp.id(142971843443150038)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(36797601014580041)
+,p_name=>'P300_ETHICS'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
+,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
+,p_prompt=>'Ethics Number'
+,p_source=>'ETHICS_NUMBER'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cMaxlength=>500
+,p_cHeight=>5
+,p_field_template=>wwv_flow_imp.id(142971843443150038)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107759863327769017)
 ,p_name=>'P300_SEND_TO_PERSON'
 ,p_source_data_type=>'NUMBER'
@@ -17728,10 +17802,10 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P300_PI_PERSON'
 ,p_source_data_type=>'NUMBER'
 ,p_is_required=>true
-,p_item_sequence=>50
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
-,p_prompt=>'Pi Person'
+,p_prompt=>'Principle Investigator'
 ,p_source=>'PI_PERSON_DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_SELECT_LIST'
@@ -17753,7 +17827,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P300_LEVEL_1_PERSON'
 ,p_source_data_type=>'NUMBER'
 ,p_is_required=>true
-,p_item_sequence=>60
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Level 1 Person'
@@ -17777,7 +17851,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760328381769021)
 ,p_name=>'P300_LEVEL_2_PERSON'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>70
+,p_item_sequence=>100
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Level 2 Person'
@@ -17802,7 +17876,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P300_DEPARTMENT'
 ,p_source_data_type=>'NUMBER'
 ,p_is_required=>true
-,p_item_sequence=>80
+,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Department'
@@ -17823,7 +17897,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760544496769023)
 ,p_name=>'P300_SPONSOR'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>90
+,p_item_sequence=>120
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Sponsor'
@@ -17845,7 +17919,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P300_TYPE'
 ,p_source_data_type=>'NUMBER'
 ,p_is_required=>true
-,p_item_sequence=>100
+,p_item_sequence=>130
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Type'
@@ -17866,7 +17940,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760698024769025)
 ,p_name=>'P300_OVERHEAD'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>110
+,p_item_sequence=>140
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Overhead'
@@ -17888,7 +17962,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760779407769026)
 ,p_name=>'P300_ADDITIONAL_ADMIN_PERSON'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>120
+,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Additional Admin Person'
@@ -17935,7 +18009,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107761016838769028)
 ,p_name=>'P300_OTHER_NOTES'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>140
+,p_item_sequence=>160
 ,p_item_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
 ,p_prompt=>'Other Notes'
