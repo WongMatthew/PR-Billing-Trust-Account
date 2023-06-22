@@ -28,7 +28,7 @@ prompt APPLICATION 230602 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230602
 --   Name:            PR Billing Trust Account
---   Date and Time:   13:50 Thursday June 22, 2023
+--   Date and Time:   14:34 Thursday June 22, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -37,7 +37,7 @@ prompt APPLICATION 230602 - PR Billing Trust Account
 --       Processes:               18
 --       Regions:                 35
 --       Buttons:                 30
---       Dynamic Actions:         15
+--       Dynamic Actions:         16
 --     Shared Components:
 --       Logic:
 --         Build Options:          1
@@ -115,7 +115,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230622122346'
+,p_last_upd_yyyymmddhh24miss=>'20230622141113'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -774,9 +774,11 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_lov_name=>'PERSON.PHONE'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
+,p_use_local_sync_table=>false
 ,p_query_table=>'PERSON'
 ,p_return_column_name=>'DBID'
 ,p_display_column_name=>'PHONE'
+,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'PHONE'
 ,p_default_sort_direction=>'ASC'
 );
@@ -17417,7 +17419,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230622122145'
+,p_last_upd_yyyymmddhh24miss=>'20230622141113'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(178639808328902542)
@@ -17664,18 +17666,18 @@ wwv_flow_imp_page.create_page_item(
 ,p_prompt=>'Phone'
 ,p_source=>'PI_PERSON_PHONE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>30
-,p_cMaxlength=>200
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_named_lov=>'PERSON.PHONE'
+,p_lov_display_null=>'YES'
+,p_cHeight=>1
 ,p_begin_on_new_line=>'N'
 ,p_begin_on_new_field=>'N'
 ,p_field_template=>wwv_flow_imp.id(142971843443150038)
 ,p_item_template_options=>'#DEFAULT#:margin-bottom-lg'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
+,p_lov_display_extra=>'YES'
+,p_attribute_01=>'NONE'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(37400908266215626)
@@ -17699,6 +17701,50 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(37403036951215647)
+,p_name=>'P300_OTHER_NOTES'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(37399837703215615)
+,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
+,p_prompt=>'Other Notes'
+,p_source=>'OTHER_NOTES'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cMaxlength=>1000
+,p_cHeight=>5
+,p_field_template=>wwv_flow_imp.id(142971791919150038)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(37403214755215649)
+,p_name=>'P300_OVERHEAD1'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(37399837703215615)
+,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
+,p_prompt=>'Overhead'
+,p_source=>'OVERHEAD'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cMaxlength=>250
+,p_cHeight=>5
+,p_field_template=>wwv_flow_imp.id(142971791919150038)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107759863327769017)
@@ -17890,27 +17936,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(107760698024769025)
-,p_name=>'P300_OVERHEAD'
-,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(37399837703215615)
-,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
-,p_prompt=>'Overhead'
-,p_source=>'OVERHEAD'
-,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
-,p_cSize=>30
-,p_cHeight=>5
-,p_field_template=>wwv_flow_imp.id(142971791919150038)
-,p_item_template_options=>'#DEFAULT#'
-,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
-,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'BOTH'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107760779407769026)
 ,p_name=>'P300_ADDITIONAL_ADMIN_PERSON'
 ,p_source_data_type=>'NUMBER'
@@ -17954,28 +17979,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(107761016838769028)
-,p_name=>'P300_OTHER_NOTES'
-,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(37399837703215615)
-,p_item_source_plug_id=>wwv_flow_imp.id(179322233882564413)
-,p_prompt=>'Other Notes'
-,p_source=>'OTHER_NOTES'
-,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
-,p_cSize=>30
-,p_cMaxlength=>1000
-,p_cHeight=>5
-,p_field_template=>wwv_flow_imp.id(142971791919150038)
-,p_item_template_options=>'#DEFAULT#'
-,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
-,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(107821525568048032)
@@ -18105,9 +18108,33 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
-,p_attribute_01=>'SELECT phone into :P300_PI_phone from person where dbid = :P300_PI_PERSON;'
+,p_attribute_01=>'SELECT dbid into :P300_PI_phone from person where dbid = :P300_PI_PERSON;'
 ,p_attribute_02=>'P300_PI_PERSON'
 ,p_attribute_03=>'P300_PI_PHONE'
+,p_attribute_04=>'N'
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(37403393944215650)
+,p_name=>'Set Department'
+,p_event_sequence=>70
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P300_PI_PERSON'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(37682292367215401)
+,p_event_id=>wwv_flow_imp.id(37403393944215650)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>'select MAX(DEPARTMENT_DBID) into :P300_PI_DEPARTMENT from person_department where PERSON_DBID = :P300_PI_PERSON;'
+,p_attribute_02=>'P300_PI_PERSON'
+,p_attribute_03=>'P300_PI_DEPARTMENT'
 ,p_attribute_04=>'N'
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
