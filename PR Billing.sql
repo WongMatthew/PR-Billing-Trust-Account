@@ -28,7 +28,7 @@ prompt APPLICATION 230602 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230602
 --   Name:            PR Billing Trust Account
---   Date and Time:   14:34 Thursday June 22, 2023
+--   Date and Time:   11:50 Friday June 23, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
