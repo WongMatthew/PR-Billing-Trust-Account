@@ -28,7 +28,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   15:55 Thursday June 29, 2023
+--   Date and Time:   16:23 Thursday June 29, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,8 +115,8 @@ wwv_flow_imp.create_flow(
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
-,p_last_updated_by=>'mwong'
-,p_last_upd_yyyymmddhh24miss=>'20230629154450'
+,p_last_updated_by=>'MWONG'
+,p_last_upd_yyyymmddhh24miss=>'20230629162240'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -21812,8 +21812,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
-,p_last_updated_by=>'mwong'
-,p_last_upd_yyyymmddhh24miss=>'20230629154450'
+,p_last_updated_by=>'MWONG'
+,p_last_upd_yyyymmddhh24miss=>'20230629161408'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(115042961881535332)
@@ -22024,7 +22024,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
-,p_rpt_named_lov=>wwv_flow_imp.id(148929444224641756)
+,p_rpt_named_lov=>wwv_flow_imp.id(184421748229013326)
 ,p_rpt_show_filter_lov=>'1'
 ,p_use_as_row_header=>'N'
 );
@@ -24599,7 +24599,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230628155551'
+,p_last_upd_yyyymmddhh24miss=>'20230629162240'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(76910433850871526)
@@ -26839,7 +26839,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629150351'
+,p_last_upd_yyyymmddhh24miss=>'20230629162056'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(77008529678759999)
@@ -27223,6 +27223,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_named_lov=>'SPONSOR.SPONOR_NAME'
 ,p_lov_display_null=>'YES'
 ,p_cSize=>30
+,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -27302,7 +27303,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
-,p_cMaxlength=>255
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -27392,14 +27392,14 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
+,p_attribute_04=>'EMAIL'
 ,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77014413038760004)
 ,p_name=>'P401_ACCOUNT_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
+,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(76964792840092202)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Account Name'
@@ -27408,7 +27408,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>60
 ,p_cMaxlength=>500
-,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -27435,7 +27434,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
+,p_attribute_04=>'TEL'
 ,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
@@ -27478,7 +27477,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
+,p_attribute_04=>'TEL'
 ,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
@@ -27500,7 +27499,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
+,p_attribute_04=>'EMAIL'
 ,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_da_event(
