@@ -28,12 +28,12 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   12:48 Thursday June 29, 2023
+--   Date and Time:   14:27 Thursday June 29, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     17
---       Items:                  109
+--       Items:                  110
 --       Processes:               22
 --       Regions:                 48
 --       Buttons:                 39
@@ -60,7 +60,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 --           Breadcrumb:           1
 --           Button:               3
 --           Report:              12
---         LOVs:                  10
+--         LOVs:                  11
 --         Plug-ins:               3
 --       PWA:
 --       Globalization:
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629123916'
+,p_last_upd_yyyymmddhh24miss=>'20230629142540'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -685,6 +685,23 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_display_column_name=>'DEPART_NAME'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'DEPART_NAME'
+,p_default_sort_direction=>'ASC'
+);
+end;
+/
+prompt --application/shared_components/user_interface/lovs/expenses_display_value
+begin
+wwv_flow_imp_shared.create_list_of_values(
+ p_id=>wwv_flow_imp.id(38803113544670103)
+,p_lov_name=>'EXPENSES.DISPLAY_VALUE'
+,p_source_type=>'TABLE'
+,p_location=>'LOCAL'
+,p_use_local_sync_table=>false
+,p_query_table=>'EXPENSES'
+,p_return_column_name=>'DBID'
+,p_display_column_name=>'DISPLAY_VALUE'
+,p_group_sort_direction=>'ASC'
+,p_default_sort_column_name=>'DISPLAY_VALUE'
 ,p_default_sort_direction=>'ASC'
 );
 end;
@@ -21796,7 +21813,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629104611'
+,p_last_upd_yyyymmddhh24miss=>'20230629133721'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(115042961881535332)
@@ -22091,6 +22108,63 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_rpt_named_lov=>wwv_flow_imp.id(114251755199016266)
 ,p_rpt_show_filter_lov=>'1'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(38693191023973926)
+,p_db_column_name=>'ACCOUNT_DBID'
+,p_display_order=>192
+,p_column_identifier=>'T'
+,p_column_label=>'Account Dbid'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(38693229797973927)
+,p_db_column_name=>'LEVEL_1_PERSON_DATE'
+,p_display_order=>202
+,p_column_identifier=>'U'
+,p_column_label=>'Level 1 Person Date'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(38693303295973928)
+,p_db_column_name=>'LEVEL_2_PERSON_DATE'
+,p_display_order=>212
+,p_column_identifier=>'V'
+,p_column_label=>'Level 2 Person Date'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(38693466085973929)
+,p_db_column_name=>'DEPARTMENT_HEAD_DATE'
+,p_display_order=>222
+,p_column_identifier=>'W'
+,p_column_label=>'Department Head Date'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(38693539185973930)
+,p_db_column_name=>'ATTACHMENT_CONTACT_FUNDING'
+,p_display_order=>232
+,p_column_identifier=>'X'
+,p_column_label=>'Attachment Contact Funding'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(38693686826973931)
+,p_db_column_name=>'ATTACHMENT_BUDGET_PAYMENT'
+,p_display_order=>242
+,p_column_identifier=>'Y'
+,p_column_label=>'Attachment Budget Payment'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_rpt(
@@ -25854,7 +25928,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629123916'
+,p_last_upd_yyyymmddhh24miss=>'20230629142540'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -25989,7 +26063,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38413501972140843)
 ,p_name=>'P400_ACCOUNT_NAME_DEP'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>50
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_source=>'ACCOUNT_NAME'
@@ -26048,14 +26122,40 @@ wwv_flow_imp_page.create_page_item(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38692955460973924)
-,p_name=>'P400_ATTACHMENTS'
-,p_item_sequence=>20
+,p_name=>'P400_ATTACHMENTS_CONTACT_FUNDING_LETTER'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
-,p_prompt=>'Attachments'
+,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
+,p_prompt=>'Attachments Contact Funding Letter'
+,p_source=>'ATTACHMENT_CONTACT_FUNDING'
+,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
-,p_field_template=>wwv_flow_imp.id(219810421716907765)
+,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'Y'
+,p_is_persistent=>'N'
+,p_attribute_01=>'N'
+,p_attribute_02=>'1'
+,p_attribute_03=>'0'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38693030134973925)
+,p_name=>'P400_ATTACHMENTS_BUDGET_PAYMENT'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
+,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
+,p_prompt=>'Budget/Payment Schedule'
+,p_source=>'ATTACHMENT_BUDGET_PAYMENT'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_imp.id(219811380425907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'N'
+,p_attribute_02=>'1'
+,p_attribute_03=>'0'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76986435803701423)
@@ -26285,7 +26385,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76993902216701431)
 ,p_name=>'P400_SPONSOR_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>40
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Sponsor'
@@ -26311,23 +26411,19 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76994258848701431)
 ,p_name=>'P400_EXPENSES'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Expenses'
 ,p_source=>'EXPENSES'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
-,p_cSize=>60
-,p_cMaxlength=>500
-,p_cHeight=>4
+,p_display_as=>'NATIVE_CHECKBOX'
+,p_named_lov=>'EXPENSES.DISPLAY_VALUE'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
-,p_item_template_options=>'#DEFAULT#'
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
-,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'BOTH'
+,p_lov_display_extra=>'YES'
+,p_attribute_01=>'3'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76995875003701432)
