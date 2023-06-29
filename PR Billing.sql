@@ -28,16 +28,16 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   11:45 Thursday June 29, 2023
+--   Date and Time:   12:39 Thursday June 29, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     17
---       Items:                  102
+--       Items:                  109
 --       Processes:               22
 --       Regions:                 48
 --       Buttons:                 39
---       Dynamic Actions:         29
+--       Dynamic Actions:         35
 --     Shared Components:
 --       Logic:
 --         Build Options:          1
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629113318'
+,p_last_upd_yyyymmddhh24miss=>'20230629123916'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -25520,7 +25520,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629113318'
+,p_last_upd_yyyymmddhh24miss=>'20230629123916'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -25529,6 +25529,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(219748807599907718)
 ,p_plug_display_sequence=>20
 ,p_plug_new_grid_row=>false
+,p_plug_grid_column_span=>7
+,p_plug_display_column=>3
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TRUST_ACCOUNT_FORM'
 ,p_include_rowid_column=>false
@@ -25651,28 +25653,75 @@ wwv_flow_imp_page.create_page_branch(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38413501972140843)
-,p_name=>'P400_ACCOUNT_NAME'
+,p_name=>'P400_ACCOUNT_NAME_DEP'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>40
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
-,p_prompt=>'Account Name'
 ,p_source=>'ACCOUNT_NAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'PLUGIN_BE.CTB.SELECT2'
-,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select ACCOUNT_NAME , DBID from Account;',
-''))
-,p_lov_display_null=>'YES'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38413704741140845)
+,p_name=>'P400_LEVEL_1_PERSON_DATE'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
+,p_prompt=>'Date'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38414059933140848)
+,p_name=>'P400_LEVEL_2_PERSON_DATE_1'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
+,p_prompt=>'Date'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
-,p_is_persistent=>'N'
-,p_lov_display_extra=>'YES'
-,p_attribute_01=>'TAG'
-,p_attribute_05=>'1'
-,p_attribute_08=>'CIC'
-,p_attribute_10=>'245'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38414245251140850)
+,p_name=>'P400_DEP_DATE'
+,p_item_sequence=>80
+,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
+,p_prompt=>'Date'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38692955460973924)
+,p_name=>'P400_ATTACHMENTS'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
+,p_prompt=>'Attachments'
+,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
+,p_field_template=>wwv_flow_imp.id(219810421716907765)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76986435803701423)
@@ -25693,7 +25742,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76988192784701426)
 ,p_name=>'P400_PI_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>10
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Principal Investigator'
@@ -25753,22 +25802,21 @@ wwv_flow_imp_page.create_page_item(
 ,p_prompt=>'Phone'
 ,p_source=>'PI_PERSON_PHONE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'PLUGIN_BE.CTB.SELECT2'
-,p_lov=>'select phone, dbid from person'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_lov_display_extra=>'YES'
-,p_attribute_01=>'TAG'
-,p_attribute_05=>'1'
-,p_attribute_08=>'CIC'
-,p_attribute_10=>'245'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989403538701426)
 ,p_name=>'P400_PI_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>20
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Email'
@@ -25818,7 +25866,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990185969701427)
 ,p_name=>'P400_OFFICE_LOCATION'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>100
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Office Location'
@@ -25840,7 +25888,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990572547701427)
 ,p_name=>'P400_PHONE_CONTACT'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>90
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Phone'
@@ -25881,22 +25929,29 @@ wwv_flow_imp_page.create_page_item(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76993494728701431)
-,p_name=>'P400_ACCOUNT_NAME_DEP'
+,p_name=>'P400_ACCOUNT_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
+,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
+,p_prompt=>'Account Name'
 ,p_source=>'ACCOUNT_NAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_HIDDEN'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76993902216701431)
 ,p_name=>'P400_SPONSOR_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>50
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Sponsor'
@@ -25907,7 +25962,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_display_null=>'YES'
 ,p_cSize=>30
 ,p_begin_on_new_line=>'N'
-,p_begin_on_new_field=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -25923,7 +25977,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76994258848701431)
 ,p_name=>'P400_EXPENSES'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>10
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(152064163033087762)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Expenses'
@@ -26040,7 +26094,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76998427491701434)
 ,p_name=>'P400_DEP_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>40
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Department Head'
@@ -26208,6 +26262,110 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(38690638852973901)
+,p_name=>'Set Level 1 Person Date'
+,p_event_sequence=>70
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P400_LEVEL_1_PERSON_DBID'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(38690741633973902)
+,p_event_id=>wwv_flow_imp.id(38690638852973901)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the current date',
+'var currentDate = new Date();',
+'',
+'// Get the month name as text',
+'var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",',
+'  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+'var month = monthNames[currentDate.getMonth()];',
+'',
+'// Format the date as required (e.g., yyyy-MMM-dd)',
+'var year = currentDate.getFullYear();',
+'var day = String(currentDate.getDate()).padStart(2, ''0'');',
+'var formattedDate = year + ''-'' + month + ''-'' + day;',
+'',
+'// Auto-fill the text field',
+'apex.item(''P400_LEVEL_1_PERSON_DATE'').setValue(formattedDate);',
+'',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(38691052016973905)
+,p_name=>'Set Level 2 Person Date'
+,p_event_sequence=>80
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P400_LEVEL_2_PERSON_DBID'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(38691100445973906)
+,p_event_id=>wwv_flow_imp.id(38691052016973905)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the current date',
+'var currentDate = new Date();',
+'',
+'// Get the month name as text',
+'var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",',
+'  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+'var month = monthNames[currentDate.getMonth()];',
+'',
+'// Format the date as required (e.g., yyyy-MMM-dd)',
+'var year = currentDate.getFullYear();',
+'var day = String(currentDate.getDate()).padStart(2, ''0'');',
+'var formattedDate = year + ''-'' + month + ''-'' + day;',
+'',
+'// Auto-fill the text field',
+'apex.item(''P400_LEVEL_2_PERSON_DATE_1'').setValue(formattedDate);'))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(38691283176973907)
+,p_name=>'Set Department Head Date'
+,p_event_sequence=>90
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P400_DEP_DBID'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(38691305133973908)
+,p_event_id=>wwv_flow_imp.id(38691283176973907)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the current date',
+'var currentDate = new Date();',
+'',
+'// Get the month name as text',
+'var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",',
+'  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+'var month = monthNames[currentDate.getMonth()];',
+'',
+'// Format the date as required (e.g., yyyy-MMM-dd)',
+'var year = currentDate.getFullYear();',
+'var day = String(currentDate.getDate()).padStart(2, ''0'');',
+'var formattedDate = year + ''-'' + month + ''-'' + day;',
+'',
+'// Auto-fill the text field',
+'apex.item(''P400_DEP_DATE'').setValue(formattedDate);'))
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(76987475422701424)
 ,p_process_sequence=>10
@@ -26245,7 +26403,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629103903'
+,p_last_upd_yyyymmddhh24miss=>'20230629122058'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(77008529678759999)
@@ -26383,10 +26541,58 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_sequence=>10
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38691685084973911)
+,p_name=>'P401_LEVEL_1_PERSON_DATE'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(76964901807092203)
+,p_prompt=>'Date'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38691768132973912)
+,p_name=>'P401_LEVEL_2_PERSON_DATE_1'
+,p_item_sequence=>70
+,p_item_plug_id=>wwv_flow_imp.id(76964901807092203)
+,p_prompt=>'Date'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_imp.id(219811380425907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(38692866089973923)
+,p_name=>'P401_DEP_DATE_1_1'
+,p_item_sequence=>100
+,p_item_plug_id=>wwv_flow_imp.id(76964901807092203)
+,p_prompt=>'Date'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76965378312092208)
 ,p_name=>'P401_DEP_HEAD1'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>50
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(76964901807092203)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Department Head'
@@ -26571,7 +26777,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77011205297760002)
 ,p_name=>'P401_LEVEL_2_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>30
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(76964901807092203)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Level 2 Person'
@@ -26584,7 +26790,6 @@ wwv_flow_imp_page.create_page_item(
 'FROM person'))
 ,p_lov_display_null=>'YES'
 ,p_cSize=>30
-,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -26974,6 +27179,108 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_04=>'N'
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(38691978667973914)
+,p_name=>'Set Level 1 Person Date'
+,p_event_sequence=>80
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P401_LEVEL_1_PERSON_DBID'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(38692022201973915)
+,p_event_id=>wwv_flow_imp.id(38691978667973914)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the current date',
+'var currentDate = new Date();',
+'',
+'// Get the month name as text',
+'var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",',
+'  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+'var month = monthNames[currentDate.getMonth()];',
+'',
+'// Format the date as required (e.g., yyyy-MMM-dd)',
+'var year = currentDate.getFullYear();',
+'var day = String(currentDate.getDate()).padStart(2, ''0'');',
+'var formattedDate = year + ''-'' + month + ''-'' + day;',
+'',
+'// Auto-fill the text field',
+'apex.item(''P401_LEVEL_1_PERSON_DATE'').setValue(formattedDate);'))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(38692201902973917)
+,p_name=>'Set Level 2 Person Date'
+,p_event_sequence=>90
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P401_LEVEL_2_PERSON_DBID'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(38692384754973918)
+,p_event_id=>wwv_flow_imp.id(38692201902973917)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the current date',
+'var currentDate = new Date();',
+'',
+'// Get the month name as text',
+'var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",',
+'  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+'var month = monthNames[currentDate.getMonth()];',
+'',
+'// Format the date as required (e.g., yyyy-MMM-dd)',
+'var year = currentDate.getFullYear();',
+'var day = String(currentDate.getDate()).padStart(2, ''0'');',
+'var formattedDate = year + ''-'' + month + ''-'' + day;',
+'',
+'// Auto-fill the text field',
+'apex.item(''P401_LEVEL_2_PERSON_DATE_1'').setValue(formattedDate);'))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(38692407940973919)
+,p_name=>'Set Department Head Date'
+,p_event_sequence=>100
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P401_DEP_HEAD1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(38692556895973920)
+,p_event_id=>wwv_flow_imp.id(38692407940973919)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the current date',
+'var currentDate = new Date();',
+'',
+'// Get the month name as text',
+'var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",',
+'  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+'var month = monthNames[currentDate.getMonth()];',
+'',
+'// Format the date as required (e.g., yyyy-MMM-dd)',
+'var year = currentDate.getFullYear();',
+'var day = String(currentDate.getDate()).padStart(2, ''0'');',
+'var formattedDate = year + ''-'' + month + ''-'' + day;',
+'',
+'// Auto-fill the text field',
+'apex.item(''P401_DEP_DATE_1_1'').setValue(formattedDate);'))
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(77025541715760013)
