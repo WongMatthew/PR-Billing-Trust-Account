@@ -28,7 +28,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   16:23 Thursday June 29, 2023
+--   Date and Time:   09:50 Friday June 30, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629162240'
+,p_last_upd_yyyymmddhh24miss=>'20230630092901'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -694,14 +694,15 @@ begin
 wwv_flow_imp_shared.create_list_of_values(
  p_id=>wwv_flow_imp.id(38803113544670103)
 ,p_lov_name=>'EXPENSES.DISPLAY_VALUE'
-,p_source_type=>'TABLE'
+,p_lov_query=>'select * from EXPENSES'
+,p_source_type=>'SQL'
 ,p_location=>'LOCAL'
 ,p_use_local_sync_table=>false
 ,p_query_table=>'EXPENSES'
 ,p_return_column_name=>'DBID'
 ,p_display_column_name=>'DISPLAY_VALUE'
 ,p_group_sort_direction=>'ASC'
-,p_default_sort_column_name=>'DISPLAY_VALUE'
+,p_default_sort_column_name=>'SORT_ORDER'
 ,p_default_sort_direction=>'ASC'
 );
 end;
@@ -25928,7 +25929,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629154226'
+,p_last_upd_yyyymmddhh24miss=>'20230630092901'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -26424,11 +26425,12 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'EXPENSES'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_CHECKBOX'
-,p_named_lov=>'EXPENSES.DISPLAY_VALUE'
+,p_lov=>'STATIC2:Payroll/Honorarium	;Payroll/Honorarium	,Lab/Radiology	;Lab/Radiology	,Staff Travel/Education	;Staff Travel/Education	,Equipment Purchases	;Equipment Purchases	,Materials/Supplies	;Materials/Supplies	,Patient Reimbursements	;Patient Reimbursem'
+||'ents	,Other Expenses	;Other Expenses	'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs'
 ,p_is_persistent=>'N'
-,p_lov_display_extra=>'YES'
+,p_lov_display_extra=>'NO'
 ,p_attribute_01=>'3'
 );
 wwv_flow_imp_page.create_page_item(
@@ -26839,7 +26841,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230629162056'
+,p_last_upd_yyyymmddhh24miss=>'20230630092835'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(77008529678759999)
@@ -27353,11 +27355,12 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'EXPENSES'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_CHECKBOX'
-,p_named_lov=>'EXPENSES.DISPLAY_VALUE'
-,p_field_template=>wwv_flow_imp.id(219811380425907767)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs'
+,p_lov=>'STATIC2:Payroll/Honorarium	;Payroll/Honorarium	,Lab/Radiology	;Lab/Radiology	,Staff Travel/Education	;Staff Travel/Education	,Equipment Purchases	;Equipment Purchases	,Materials/Supplies	;Materials/Supplies	,Patient Reimbursements	;Patient Reimbursem'
+||'ents	,Other Expenses	;Other Expenses	'
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_lov_display_extra=>'YES'
+,p_lov_display_extra=>'NO'
 ,p_attribute_01=>'3'
 );
 wwv_flow_imp_page.create_page_item(
