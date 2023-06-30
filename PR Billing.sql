@@ -28,7 +28,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   09:50 Friday June 30, 2023
+--   Date and Time:   10:09 Friday June 30, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230630092901'
+,p_last_upd_yyyymmddhh24miss=>'20230630100822'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -25929,7 +25929,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230630092901'
+,p_last_upd_yyyymmddhh24miss=>'20230630095929'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -26231,7 +26231,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76988606184701426)
 ,p_name=>'P400_DEPARTMENT_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>50
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Department'
@@ -26257,7 +26257,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989040468701426)
 ,p_name=>'P400_PI_PHONE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>40
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Phone'
@@ -26277,7 +26277,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989403538701426)
 ,p_name=>'P400_PI_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Email'
@@ -26299,7 +26299,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989843884701427)
 ,p_name=>'P400_CONTACT_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>60
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Contact'
@@ -26327,7 +26327,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990185969701427)
 ,p_name=>'P400_OFFICE_LOCATION'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>90
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Office Location'
@@ -26338,7 +26338,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cMaxlength=>200
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
-,p_item_template_options=>'#DEFAULT#'
+,p_item_template_options=>'#DEFAULT#:margin-top-lg'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
@@ -26349,7 +26349,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990572547701427)
 ,p_name=>'P400_PHONE_CONTACT'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>80
+,p_item_sequence=>100
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Phone'
@@ -26370,7 +26370,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990964237701427)
 ,p_name=>'P400_EMAIL_CONTACT'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>70
+,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
 ,p_prompt=>'Email'
@@ -26381,7 +26381,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cMaxlength=>200
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
-,p_item_template_options=>'#DEFAULT#:margin-top-lg'
+,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
@@ -26841,7 +26841,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230630092835'
+,p_last_upd_yyyymmddhh24miss=>'20230630100822'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(77008529678759999)
@@ -27161,7 +27161,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77009584817760001)
 ,p_name=>'P401_DEPARTMENT_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>50
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(76964538379092199)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Department'
@@ -27358,7 +27358,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov=>'STATIC2:Payroll/Honorarium	;Payroll/Honorarium	,Lab/Radiology	;Lab/Radiology	,Staff Travel/Education	;Staff Travel/Education	,Equipment Purchases	;Equipment Purchases	,Materials/Supplies	;Materials/Supplies	,Patient Reimbursements	;Patient Reimbursem'
 ||'ents	,Other Expenses	;Other Expenses	'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
-,p_item_template_options=>'#DEFAULT#'
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs'
 ,p_is_persistent=>'N'
 ,p_lov_display_extra=>'NO'
 ,p_attribute_01=>'3'
@@ -27380,7 +27380,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77014005355760004)
 ,p_name=>'P401_CONTACT_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>70
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(76964538379092199)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Email'
@@ -27391,7 +27391,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cMaxlength=>200
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
-,p_item_template_options=>'#DEFAULT#:margin-top-lg'
+,p_item_template_options=>'#DEFAULT#:margin-top-md'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
@@ -27444,7 +27444,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77015178365760006)
 ,p_name=>'P401_CONTACT_OFFICE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>90
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(76964538379092199)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Office'
@@ -27455,7 +27455,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cMaxlength=>200
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
-,p_item_template_options=>'#DEFAULT#:margin-top-md'
+,p_item_template_options=>'#DEFAULT#:margin-top-lg'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
@@ -27466,7 +27466,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77015570260760006)
 ,p_name=>'P401_PI_PERSON_PHONE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>40
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(76964538379092199)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Phone'
@@ -27487,7 +27487,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77016023764760006)
 ,p_name=>'P401_PI_PERSON_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>20
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(76964538379092199)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
 ,p_prompt=>'Email'
