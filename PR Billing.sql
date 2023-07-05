@@ -28,7 +28,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   14:56 Tuesday July 4, 2023
+--   Date and Time:   15:53 Tuesday July 4, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230704145551'
+,p_last_upd_yyyymmddhh24miss=>'20230704155240'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -21492,7 +21492,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230704145551'
+,p_last_upd_yyyymmddhh24miss=>'20230704150736'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(76847751887766048)
@@ -21527,7 +21527,7 @@ wwv_flow_imp_page.create_worksheet(
 ,p_pagination_type=>'ROWS_X_TO_Y'
 ,p_pagination_display_pos=>'BOTTOM_RIGHT'
 ,p_show_actions_menu=>'N'
-,p_report_list_mode=>'TABS'
+,p_report_list_mode=>'NONE'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'C'
 ,p_enable_mail_download=>'Y'
@@ -24682,7 +24682,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230704145204'
+,p_last_upd_yyyymmddhh24miss=>'20230704155240'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(76910433850871526)
@@ -24902,6 +24902,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38996774400509219)
 ,p_name=>'P300_ADDITIONAL_ADMIN_PERSON_DATE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(76239841196166823)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -24930,6 +24931,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38997583698509227)
 ,p_name=>'P300_FINANCE_MANAGER_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(38997412841509226)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -24957,6 +24959,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38997663879509228)
 ,p_name=>'P300_LEVEL_3_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(38997412841509226)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -24984,6 +24987,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38997756107509229)
 ,p_name=>'P300_LEVEL_3_PERSON_DATE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(38997412841509226)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25012,6 +25016,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38997849099509230)
 ,p_name=>'P300_FINANCE_MANAGER_DATE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(38997412841509226)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25040,6 +25045,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38998612833509238)
 ,p_name=>'P300_EXPENSES'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(76239617721166821)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25093,6 +25099,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76911245963871527)
 ,p_name=>'P300_CONTACT_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25121,6 +25128,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76911583529871527)
 ,p_name=>'P300_PI_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25151,7 +25159,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(76239841196166823)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
-,p_prompt=>'Level 1 Person'
+,p_prompt=>'Principal Investigator'
 ,p_source=>'LEVEL_1_PERSON_DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_POPUP_LOV'
@@ -25179,7 +25187,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(76239841196166823)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
-,p_prompt=>'Level 2 Person'
+,p_prompt=>'Designate'
 ,p_source=>'LEVEL_2_PERSON_DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_POPUP_LOV'
@@ -25204,6 +25212,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76912750963871529)
 ,p_name=>'P300_DEPARTMENT_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25291,10 +25300,11 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76914406633871529)
 ,p_name=>'P300_ADDITIONAL_ADMIN_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(76239841196166823)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
-,p_prompt=>'Additional Admin Person'
+,p_prompt=>'Department Head'
 ,p_source=>'ADDITIONAL_ADMIN_PERSON_DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_POPUP_LOV'
@@ -25319,6 +25329,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76914785940871531)
 ,p_name=>'P300_CONTACT_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25362,6 +25373,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76915574348871531)
 ,p_name=>'P300_ETHICS_NUMBER'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(76240535687166830)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25383,6 +25395,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76916027569871531)
 ,p_name=>'P300_FAS_NUMBER'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(76240535687166830)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25405,6 +25418,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76916432931871531)
 ,p_name=>'P300_ACCOUNT_NAME'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(76239617721166821)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25426,6 +25440,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76916847656871531)
 ,p_name=>'P300_CONTACT_PHONE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25469,6 +25484,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76917552395871532)
 ,p_name=>'P300_PI_PERSON_PHONE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25490,6 +25506,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76917972313871532)
 ,p_name=>'P300_PI_PERSON_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(76239494034166820)
 ,p_item_source_plug_id=>wwv_flow_imp.id(76910433850871526)
@@ -25656,6 +25673,9 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(76963905821092193)
 ,p_event_id=>wwv_flow_imp.id(76241701898166842)
@@ -25670,9 +25690,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(38996875163509220)
 ,p_name=>'Set Level 1 Person Date'
@@ -25919,14 +25936,14 @@ begin
 wwv_flow_imp_page.create_page(
  p_id=>400
 ,p_name=>'Trust Account User-Side Form'
-,p_alias=>'TRUST-ACCOUNT-USER-SIDE-FORM1'
+,p_alias=>'TRUST-ACCOUNT-USER-SIDE-FORM'
 ,p_step_title=>'Trust Account User-Side Form'
 ,p_autocomplete_on_off=>'OFF'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230704144740'
+,p_last_upd_yyyymmddhh24miss=>'20230704154526'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -26084,6 +26101,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38413704741140845)
 ,p_name=>'P400_LEVEL_1_PERSON_DATE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26139,6 +26157,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38414245251140850)
 ,p_name=>'P400_DEP_DATE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26204,6 +26223,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(38694558214973940)
 ,p_name=>'P400_ACCOUNT_NAME'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(38694641245973941)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26282,6 +26302,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76988192784701426)
 ,p_name=>'P400_PI_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26310,6 +26331,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76988606184701426)
 ,p_name=>'P400_DEPARTMENT_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26336,6 +26358,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989040468701426)
 ,p_name=>'P400_PI_PHONE'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26356,6 +26379,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989403538701426)
 ,p_name=>'P400_PI_EMAIL'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26378,6 +26402,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76989843884701427)
 ,p_name=>'P400_CONTACT_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26428,6 +26453,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990572547701427)
 ,p_name=>'P400_PHONE_CONTACT'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>100
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26449,6 +26475,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76990964237701427)
 ,p_name=>'P400_EMAIL_CONTACT'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(152063335851087754)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26497,6 +26524,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76994258848701431)
 ,p_name=>'P400_EXPENSES'
 ,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
 ,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(38694641245973941)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26515,6 +26543,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76995875003701432)
 ,p_name=>'P400_ETHICS_NUMBER'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(152064359036087764)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26534,6 +26563,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76996336272701432)
 ,p_name=>'P400_FAS_NUMBER'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(152064359036087764)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26554,6 +26584,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76997626793701434)
 ,p_name=>'P400_LEVEL_1_PERSON_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26610,6 +26641,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76998427491701434)
 ,p_name=>'P400_DEP_DBID'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(152064556821087766)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
