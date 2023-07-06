@@ -28,7 +28,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   14:44 Thursday July 6, 2023
+--   Date and Time:   16:37 Thursday July 6, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -46,7 +46,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 --         Breadcrumbs:            1
 --           Entries:              8
 --       Security:
---         Authentication:         2
+--         Authentication:         4
 --         Authorization:          1
 --       User Interface:
 --         Themes:                 1
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230706123505'
+,p_last_upd_yyyymmddhh24miss=>'20230706163749'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -211,7 +211,7 @@ wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(39052242722932945)
 ,p_list_item_display_sequence=>40
 ,p_list_item_link_text=>'Research Trust Account Application'
-,p_list_item_link_target=>'f?p=&APP_ID.:400:&SESSION.::&DEBUG.::::'
+,p_list_item_link_target=>'f?p=&APP_ID.:400:&SESSION.::&DEBUG.::P400_DBID::'
 ,p_list_item_icon=>'fa-forms'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
@@ -14605,6 +14605,59 @@ begin
 null;
 end;
 /
+prompt --application/shared_components/security/authentications/copy_of_hlisso
+begin
+wwv_flow_imp_shared.create_authentication(
+ p_id=>wwv_flow_imp.id(39582914688591526)
+,p_name=>'Copy of HLISSO'
+,p_scheme_type=>'NATIVE_SOCIAL'
+,p_attribute_01=>wwv_flow_imp.id(16898766429144912)
+,p_attribute_02=>'OPENID_CONNECT'
+,p_attribute_03=>'https://amap01.hli.ubc.ca/nidp/oauth/nam/.well-known/openid-configuration'
+,p_attribute_07=>'profile,organization,email'
+,p_attribute_09=>'preferred_username'
+,p_attribute_10=>'email,given_name,family_name'
+,p_attribute_11=>'N'
+,p_attribute_13=>'Y'
+,p_plsql_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'procedure post_login ',
+'as',
+'  c_group_membership_collection_name constant varchar2(16) := ''GROUP_MEMBERSHIP'';',
+'  l_group_membership apex_t_varchar2;',
+'begin',
+'  --:APP_USER_NAME := apex_json.get_varchar2(''given_name'') || '' '' || apex_json.get_varchar2(''family_name'');',
+'  --:G_EMAIL := apex_json.get_varchar2(''email'');',
+'  l_group_membership := apex_json.get_t_varchar2(''group_membership'');',
+'  ',
+'  apex_collection.create_or_truncate_collection(c_group_membership_collection_name);',
+'  for i in 1..l_group_membership.count',
+'  loop',
+'    apex_collection.add_member(',
+'      p_collection_name => c_group_membership_collection_name',
+'      , p_c001 => l_group_membership(i)',
+'    );',
+'  end loop;',
+'end post_login;'))
+,p_invalid_session_type=>'LOGIN'
+,p_logout_url=>'/AGLogout'
+,p_post_auth_process=>'post_login'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+);
+end;
+/
+prompt --application/shared_components/security/authentications/copy_of_oracle_apex_accounts
+begin
+wwv_flow_imp_shared.create_authentication(
+ p_id=>wwv_flow_imp.id(39583134196591526)
+,p_name=>'Copy of Oracle APEX Accounts'
+,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
+,p_invalid_session_type=>'LOGIN'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+);
+end;
+/
 prompt --application/shared_components/security/authentications/hlisso
 begin
 wwv_flow_imp_shared.create_authentication(
@@ -21878,7 +21931,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230706121110'
+,p_last_upd_yyyymmddhh24miss=>'20230706163749'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(115042961881535332)
@@ -21940,11 +21993,10 @@ wwv_flow_imp_page.create_worksheet(
 ,p_no_data_found_message=>'No data found.'
 ,p_pagination_type=>'ROWS_X_TO_Y'
 ,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_show_actions_menu=>'N'
 ,p_report_list_mode=>'TABS'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'C'
-,p_show_notify=>'Y'
-,p_download_formats=>'CSV:HTML:XLSX:PDF'
 ,p_enable_mail_download=>'Y'
 ,p_detail_link=>'f?p=&APP_ID.:401:&SESSION.::&DEBUG.::P401_DBID:#DBID#'
 ,p_detail_link_text=>'<img src="#APEX_FILES#app_ui/img/icons/apex-edit-pencil.png" class="apex-edit-pencil" alt="">'
@@ -22162,9 +22214,6 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_identifier=>'S'
 ,p_column_label=>'Principle Investigator Email'
 ,p_column_type=>'STRING'
-,p_display_text_as=>'LOV_ESCAPE_SC'
-,p_rpt_named_lov=>wwv_flow_imp.id(114251755199016266)
-,p_rpt_show_filter_lov=>'1'
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
@@ -22317,7 +22366,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'382093'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'ACCOUNT_NAME:PI_PERSON_DBID:DEPARTMENT_DBID:CONTACT_DBID:SPONSOR_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:DEPARTMENT_HEAD_DBID:ETHICS_NUMBER:FAS_NUMBER:'
+,p_report_columns=>'CONTACT_DBID:ACCOUNT_NUMBER:ACCOUNT_NAME:LEVEL_1_PERSON_DBID:DEPARTMENT_HEAD_DBID:DEPARTMENT_DBID:SPONSOR_DBID:EXPENSES:FAS_NUMBER:ETHICS_NUMBER:PI_PERSON_EMAIL:OTHER_NOTES:'
 ,p_sort_column_1=>'0'
 ,p_sort_direction_1=>'ASC'
 ,p_sort_column_2=>'0'
@@ -26002,7 +26051,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230706123505'
+,p_last_upd_yyyymmddhh24miss=>'20230706161656'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -26417,7 +26466,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
-,p_is_persistent=>'N'
 ,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
@@ -27136,7 +27184,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230706120007'
+,p_last_upd_yyyymmddhh24miss=>'20230706162914'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(77008529678759999)
@@ -28080,7 +28128,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'EMAIL'
+,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_da_event(
