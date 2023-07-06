@@ -28,14 +28,14 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   15:58 Wednesday July 5, 2023
+--   Date and Time:   16:37 Thursday July 6, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     16
---       Items:                  119
---       Processes:               20
---       Regions:                 46
+--       Items:                  120
+--       Processes:               21
+--       Regions:                 47
 --       Buttons:                 35
 --       Dynamic Actions:         45
 --     Shared Components:
@@ -46,7 +46,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 --         Breadcrumbs:            1
 --           Entries:              8
 --       Security:
---         Authentication:         2
+--         Authentication:         4
 --         Authorization:          1
 --       User Interface:
 --         Themes:                 1
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230705155829'
+,p_last_upd_yyyymmddhh24miss=>'20230706163749'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -211,7 +211,7 @@ wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(39052242722932945)
 ,p_list_item_display_sequence=>40
 ,p_list_item_link_text=>'Research Trust Account Application'
-,p_list_item_link_target=>'f?p=&APP_ID.:400:&SESSION.::&DEBUG.::::'
+,p_list_item_link_target=>'f?p=&APP_ID.:400:&SESSION.::&DEBUG.::P400_DBID::'
 ,p_list_item_icon=>'fa-forms'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
@@ -14605,6 +14605,59 @@ begin
 null;
 end;
 /
+prompt --application/shared_components/security/authentications/copy_of_hlisso
+begin
+wwv_flow_imp_shared.create_authentication(
+ p_id=>wwv_flow_imp.id(39582914688591526)
+,p_name=>'Copy of HLISSO'
+,p_scheme_type=>'NATIVE_SOCIAL'
+,p_attribute_01=>wwv_flow_imp.id(16898766429144912)
+,p_attribute_02=>'OPENID_CONNECT'
+,p_attribute_03=>'https://amap01.hli.ubc.ca/nidp/oauth/nam/.well-known/openid-configuration'
+,p_attribute_07=>'profile,organization,email'
+,p_attribute_09=>'preferred_username'
+,p_attribute_10=>'email,given_name,family_name'
+,p_attribute_11=>'N'
+,p_attribute_13=>'Y'
+,p_plsql_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'procedure post_login ',
+'as',
+'  c_group_membership_collection_name constant varchar2(16) := ''GROUP_MEMBERSHIP'';',
+'  l_group_membership apex_t_varchar2;',
+'begin',
+'  --:APP_USER_NAME := apex_json.get_varchar2(''given_name'') || '' '' || apex_json.get_varchar2(''family_name'');',
+'  --:G_EMAIL := apex_json.get_varchar2(''email'');',
+'  l_group_membership := apex_json.get_t_varchar2(''group_membership'');',
+'  ',
+'  apex_collection.create_or_truncate_collection(c_group_membership_collection_name);',
+'  for i in 1..l_group_membership.count',
+'  loop',
+'    apex_collection.add_member(',
+'      p_collection_name => c_group_membership_collection_name',
+'      , p_c001 => l_group_membership(i)',
+'    );',
+'  end loop;',
+'end post_login;'))
+,p_invalid_session_type=>'LOGIN'
+,p_logout_url=>'/AGLogout'
+,p_post_auth_process=>'post_login'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+);
+end;
+/
+prompt --application/shared_components/security/authentications/copy_of_oracle_apex_accounts
+begin
+wwv_flow_imp_shared.create_authentication(
+ p_id=>wwv_flow_imp.id(39583134196591526)
+,p_name=>'Copy of Oracle APEX Accounts'
+,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
+,p_invalid_session_type=>'LOGIN'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+);
+end;
+/
 prompt --application/shared_components/security/authentications/hlisso
 begin
 wwv_flow_imp_shared.create_authentication(
@@ -21878,7 +21931,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230705144848'
+,p_last_upd_yyyymmddhh24miss=>'20230706163749'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(115042961881535332)
@@ -21980,7 +22033,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'LEVEL_1_PERSON_DBID'
 ,p_display_order=>12
 ,p_column_identifier=>'F'
-,p_column_label=>'Level 1 Person'
+,p_column_label=>'PI/Account Holder Level 1'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_column_alignment=>'RIGHT'
@@ -21993,7 +22046,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'LEVEL_2_PERSON_DBID'
 ,p_display_order=>22
 ,p_column_identifier=>'G'
-,p_column_label=>'Level 2 Person'
+,p_column_label=>'Designate Level 1'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_column_alignment=>'RIGHT'
@@ -22019,7 +22072,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'CONTACT_DBID'
 ,p_display_order=>42
 ,p_column_identifier=>'D'
-,p_column_label=>'Contact'
+,p_column_label=>'Send Report to'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_column_alignment=>'RIGHT'
@@ -22045,7 +22098,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'ETHICS_NUMBER'
 ,p_display_order=>72
 ,p_column_identifier=>'H'
-,p_column_label=>'Ethics Number'
+,p_column_label=>'Ethics No.'
 ,p_column_type=>'NUMBER'
 ,p_column_alignment=>'RIGHT'
 ,p_use_as_row_header=>'N'
@@ -22055,7 +22108,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'FAS_NUMBER'
 ,p_display_order=>82
 ,p_column_identifier=>'I'
-,p_column_label=>'FAS Number'
+,p_column_label=>'FAS'
 ,p_column_type=>'NUMBER'
 ,p_column_alignment=>'RIGHT'
 ,p_use_as_row_header=>'N'
@@ -22075,7 +22128,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'DEPARTMENT_HEAD_DBID'
 ,p_display_order=>102
 ,p_column_identifier=>'L'
-,p_column_label=>'Department Head'
+,p_column_label=>'Department Head Level 2'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'LOV_ESCAPE_SC'
 ,p_column_alignment=>'RIGHT'
@@ -22161,9 +22214,6 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_identifier=>'S'
 ,p_column_label=>'Principle Investigator Email'
 ,p_column_type=>'STRING'
-,p_display_text_as=>'LOV_ESCAPE_SC'
-,p_rpt_named_lov=>wwv_flow_imp.id(114251755199016266)
-,p_rpt_show_filter_lov=>'1'
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
@@ -22275,7 +22325,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'ACCOUNT_NUMBER'
 ,p_display_order=>302
 ,p_column_identifier=>'AE'
-,p_column_label=>'Account Number'
+,p_column_label=>'Department ID'
 ,p_column_type=>'NUMBER'
 ,p_column_alignment=>'RIGHT'
 ,p_use_as_row_header=>'N'
@@ -22300,6 +22350,15 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_alignment=>'RIGHT'
 ,p_use_as_row_header=>'N'
 );
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(39170189624747333)
+,p_db_column_name=>'OTHER_NOTES'
+,p_display_order=>332
+,p_column_identifier=>'AH'
+,p_column_label=>'Other Notes'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
 wwv_flow_imp_page.create_worksheet_rpt(
  p_id=>wwv_flow_imp.id(115048825897555966)
 ,p_application_user=>'APXWS_DEFAULT'
@@ -22307,7 +22366,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'382093'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'ACCOUNT_NAME:PI_PERSON_DBID:DEPARTMENT_DBID:CONTACT_DBID:SPONSOR_DBID:LEVEL_1_PERSON_DBID:LEVEL_2_PERSON_DBID:DEPARTMENT_HEAD_DBID:ETHICS_NUMBER:FAS_NUMBER:'
+,p_report_columns=>'CONTACT_DBID:ACCOUNT_NUMBER:ACCOUNT_NAME:LEVEL_1_PERSON_DBID:DEPARTMENT_HEAD_DBID:DEPARTMENT_DBID:SPONSOR_DBID:EXPENSES:FAS_NUMBER:ETHICS_NUMBER:PI_PERSON_EMAIL:OTHER_NOTES:'
 ,p_sort_column_1=>'0'
 ,p_sort_direction_1=>'ASC'
 ,p_sort_column_2=>'0'
@@ -25985,11 +26044,14 @@ wwv_flow_imp_page.create_page(
 ,p_name=>'Research Trust Account Application and Signing Authority Form'
 ,p_step_title=>'Research Trust Account Application and Signing Authority Form'
 ,p_autocomplete_on_off=>'OFF'
+,p_html_page_header=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'',
+''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230705155829'
+,p_last_upd_yyyymmddhh24miss=>'20230706161656'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -26126,7 +26188,7 @@ wwv_flow_imp_page.create_page_button(
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(77000092685701440)
 ,p_branch_name=>'Go To Page 4'
-,p_branch_action=>'f?p=&APP_ID.:4:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+,p_branch_action=>'f?p=&APP_ID.:400:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_sequence=>1
@@ -26404,7 +26466,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
-,p_is_persistent=>'N'
 ,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
@@ -26672,7 +26733,6 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76996336272701432)
 ,p_name=>'P400_FAS_NUMBER'
 ,p_source_data_type=>'NUMBER'
-,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(152064359036087764)
 ,p_item_source_plug_id=>wwv_flow_imp.id(152138313918152397)
@@ -26683,7 +26743,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cSize=>30
 ,p_cMaxlength=>255
 ,p_begin_on_new_line=>'N'
-,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_03=>'left'
@@ -27088,6 +27148,19 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
 wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(39170441363747336)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Custome Message'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'apex_application.g_print_success_message :=''<span style="color:#ffffff">Successfully Submitted</span>'';',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(76987126547701424)
 ,p_process_sequence=>10
 ,p_process_point=>'BEFORE_HEADER'
@@ -27111,7 +27184,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230705155015'
+,p_last_upd_yyyymmddhh24miss=>'20230706162914'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(77008529678759999)
@@ -27146,6 +27219,17 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(219758681342907724)
 ,p_plug_display_sequence=>20
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(39170206393747334)
+,p_plug_name=>'Notes'
+,p_parent_plug_id=>wwv_flow_imp.id(77008529678759999)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(219748807599907718)
+,p_plug_display_sequence=>90
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -27624,6 +27708,27 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_05=>'PLAIN'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(39170311812747335)
+,p_name=>'P401_NOTES'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(39170206393747334)
+,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
+,p_source=>'OTHER_NOTES'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>97
+,p_cMaxlength=>500
+,p_cHeight=>5
+,p_field_template=>wwv_flow_imp.id(219811380425907767)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(76965378312092208)
 ,p_name=>'P401_DEP_HEAD1'
 ,p_source_data_type=>'NUMBER'
@@ -27857,7 +27962,6 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(77011957173760002)
 ,p_name=>'P401_FAS_NUMBER'
 ,p_source_data_type=>'NUMBER'
-,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(76964674958092201)
 ,p_item_source_plug_id=>wwv_flow_imp.id(77008529678759999)
@@ -27867,7 +27971,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>35
 ,p_begin_on_new_line=>'N'
-,p_field_template=>wwv_flow_imp.id(219811431949907767)
+,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_03=>'left'
@@ -28024,7 +28128,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_04=>'EMAIL'
+,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_da_event(
@@ -28055,6 +28159,9 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(76965589001092210)
 ,p_event_id=>wwv_flow_imp.id(76965536450092209)
@@ -28079,9 +28186,6 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(76965773415092212)
 ,p_event_id=>wwv_flow_imp.id(76965698188092211)
