@@ -28,7 +28,7 @@ prompt APPLICATION 230604 - PR Billing Trust Account
 -- Application Export:
 --   Application:     230604
 --   Name:            PR Billing Trust Account
---   Date and Time:   09:08 Friday July 7, 2023
+--   Date and Time:   12:53 Monday July 10, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'PR Billing Trust Account'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230706163749'
+,p_last_upd_yyyymmddhh24miss=>'20230710123715'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -23701,13 +23701,13 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Department Entry Form'
 ,p_autocomplete_on_off=>'OFF'
 ,p_javascript_code_onload=>'$(''[data-action="edit"]'').hide();'
-,p_step_template=>wwv_flow_imp.id(219638383620907642)
-,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd'
+,p_step_template=>wwv_flow_imp.id(219645354287907656)
+,p_page_template_options=>'#DEFAULT#'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230602114215'
+,p_last_upd_yyyymmddhh24miss=>'20230710111359'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(219640217951553448)
@@ -24019,20 +24019,20 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(220322643505215319)
 ,p_item_source_plug_id=>wwv_flow_imp.id(220322643505215319)
-,p_prompt=>'Depart Name'
+,p_prompt=>'Department'
 ,p_source=>'DEPART_NAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
+,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
 ,p_cMaxlength=>100
-,p_cHeight=>5
-,p_field_template=>wwv_flow_imp.id(219810552647907767)
+,p_grid_column=>3
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'BOTH'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(184596875629526720)
@@ -24045,17 +24045,17 @@ wwv_flow_imp_page.create_page_item(
 ,p_prompt=>'Location'
 ,p_source=>'LOCATION'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
+,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
 ,p_cMaxlength=>100
-,p_cHeight=>5
-,p_field_template=>wwv_flow_imp.id(219810552647907767)
+,p_grid_column=>3
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'BOTH'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(184613074904576700)
@@ -24084,9 +24084,10 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'PHONE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>32
+,p_cSize=>30
 ,p_cMaxlength=>25
-,p_field_template=>wwv_flow_imp.id(219810552647907767)
+,p_grid_column=>3
+,p_field_template=>wwv_flow_imp.id(219811431949907767)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
@@ -24395,7 +24396,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230630111333'
+,p_last_upd_yyyymmddhh24miss=>'20230710111627'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(219670873746724223)
@@ -24569,7 +24570,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'CITY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>30
+,p_cSize=>24
 ,p_cMaxlength=>100
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
@@ -24612,7 +24613,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'COUNTRY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>30
+,p_cSize=>24
 ,p_cMaxlength=>100
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
@@ -24634,7 +24635,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'SPONSOR_COMPANY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>30
+,p_cSize=>29
 ,p_cMaxlength=>100
 ,p_field_template=>wwv_flow_imp.id(219811380425907767)
 ,p_item_template_options=>'#DEFAULT#:margin-top-lg'
@@ -24692,7 +24693,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'PHONE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
-,p_cSize=>32
+,p_cSize=>24
 ,p_cMaxlength=>25
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(219811431949907767)
@@ -26051,7 +26052,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230706161656'
+,p_last_upd_yyyymmddhh24miss=>'20230710123715'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(152138313918152397)
@@ -26187,7 +26188,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(77000092685701440)
-,p_branch_name=>'Go To Page 4'
+,p_branch_name=>'Go To Page 400'
 ,p_branch_action=>'f?p=&APP_ID.:400:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
@@ -27152,7 +27153,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_sequence=>20
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'Custome Message'
+,p_process_name=>'Custom Message'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'begin',
 'apex_application.g_print_success_message :=''<span style="color:#ffffff">Successfully Submitted</span>'';',
